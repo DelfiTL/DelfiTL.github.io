@@ -33,16 +33,16 @@ let fondo, papel; //los background
 
 //----PGRAPHICS---
 let capa1;
-//let capa2;
+let capa2;
 //---CLASES
 let fig;
 let imagen;
-//let capt;
+let capt;
 
-//var estado = [];
-let estado=1;
 
-//let t = 300; //transparencia de la captura final
+let estado=true;
+
+
 
 
 function preload() {
@@ -58,15 +58,19 @@ function preload() {
     var imagen = loadImage("assets/figu/cuad" + i + ".png");
     cuad.push(imagen);
   }
-  for (var i = 1; i < 10; i++) {
+  for (var i = 1; i < 9; i++) {
     var imagen = loadImage("assets/figu/rec" + i + ".png");
     rec.push(imagen);
+  }
+  for (var i = 1; i < 3; i++) {
+    var imagen = loadImage("assets/figu/grup" + i + ".png");
+    grup.push(imagen);
   }
   // classifier = ml5.soundClassifier(classModel + 'model.json', options); //clsificador
   classifier = ml5.soundClassifier(soundModel + 'model.json');
 
-  fondo = loadImage('/assets/fondo.jpg');
-  papel = loadImage('/assets/papel.jpg');
+  fondo = loadImage('assets/fondo.jpg');
+  papel = loadImage('assets/papel.jpg');
 
 }
 
@@ -75,7 +79,7 @@ function setup() {
   userStartAudio(); // esto lo utilizo porque en algunos navigadores se cuelga el audio. Esto hace un reset del motor de audio (audio context)
 
   fig = new Figuras();
- // capt = new Capturas();
+  capt = new Capturas();
  
   //FUNCIONES DE AUDIO
   audioContext = getAudioContext();
@@ -84,10 +88,12 @@ function setup() {
 
   classifier.classify(gotResult);
 
+ 
+
 }
 
 function draw() {
-  //windowResized();
+  
   background(fondo);
 
   //AMPLITUD
@@ -103,40 +109,37 @@ function draw() {
   
 
   
-    
   fig.dibujarcapa1();
   fig.dibfig();
-  if (label == 'silbido') {
-    label = ''; //pa invocarlo una sola vez (una funcion) pa k no se repita
-    A = (A + 1) % 17; 
- //A2 = (A2 + 1) % 17; 
-  B = (A + 1) % 12; 
-  C = (A + 1) % 3; 
-  D = (A + 1) % 8; 
-  }
 
+  if (estado){
   if (haySonido) {
-    fig.mover();
-  }
+      fig.mover();
+      fig.cambiarestado();
+    }
+}
+if (label =='aplauso'){
+  label = '';
+ // capt.dibujarcapa2();
+ // capt.pausa();
+
+}
+
   
 }
-
-// un aplauso, un sonido alto en poco tiempo
-//agrregar mas imagenes con el sonido, dependiendo el sonido?
-
 function mouseClicked(){
- A = (A + 1) % 17; 
- //A2 = (A2 + 1) % 17; 
-  B = (A + 1) % 12; 
-  C = (A + 1) % 3; 
-  D = (A + 1) % 8; 
-}
+    A = (A + 1) % 17; 
+
+    B = (B + 1) % 12; 
+    C = (C + 1) % 3; 
+    D = (D + 1) % 7; 
+    }
 
 
-/*function windowResized() { //funcion para actualizar el tam de la pantalla
+
+function windowResized() { //funcion para actualizar el tam de la pantalla
   resizeCanvas(windowWidth, windowHeight);
-}*/
-
+}
 
 //-------FRECUENCIA-----
 function startPitch() {
@@ -167,3 +170,4 @@ function gotResult(error, results) {
   // console.log(results[0]);
   label = results[0].label;
 }
+
