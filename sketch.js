@@ -58,7 +58,7 @@ function preload() {
     var imagen = loadImage("assets/figu/cuad" + i + ".png");
     cuad.push(imagen);
   }
-  for (var i = 1; i < 9; i++) {
+  for (var i = 1; i < 10; i++) {
     var imagen = loadImage("assets/figu/rec" + i + ".png");
     rec.push(imagen);
   }
@@ -94,7 +94,8 @@ function setup() {
 
 function draw() {
   
-  background(fondo);
+ // background(fondo);
+  background(0);
 
   //AMPLITUD
   amp = mic.getLevel();
@@ -111,9 +112,9 @@ function draw() {
   
   fig.dibujarcapa1();
   fig.dibfig();
-
+  
   if (estado){
-  if (haySonido) {
+    if (haySonido) {
       fig.mover();
       fig.cambiarestado();
     }
@@ -128,11 +129,11 @@ if (label =='aplauso'){
   
 }
 function mouseClicked(){
-    A = (A + 1) % 17; 
-
-    B = (B + 1) % 12; 
-    C = (C + 1) % 3; 
-    D = (D + 1) % 7; 
+  A = A + 1; if (A == 17) { A = 0; }
+  B = B + 1; if (B == 12) { B = 0; }
+  C = C + 1; if (C == 3) { C = 0; }
+  D = D + 1; if (D == 8) { D = 0; }
+  E = E + 1; if (E == 2) { E = 0; }
     }
 
 
