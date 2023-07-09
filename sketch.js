@@ -11,12 +11,13 @@ let amp; //variable donde cargo los valores de amplitud del sonido de entrada
 let haySonido = false; // vaiable buleana que de define el ESTADO
 let nohaySonido = false;
 let antesHabiaSonido = false; //memoria de la variable "haySonido". Guarda el valor de la variable en fotograma anterior
+
+//let audioContext; //motor de audio del navegador
 //----FRECUENCIA -----
-let audioContext; //motor de audio del navegador
-let frecuencia; //variable donde cargo los valores de frecuencia del sonido de entrada
-let frecuenciaAnterior; //memoria de la variable "frecuencia". Guarda el valor de la variable en fotograma anterior
-const pichModel = 'https://cdn.jsdelivr.net/gh/ml5js/ml5-data-and-models/models/pitch-detection/crepe/';
-let muchafrec = false;
+//let frecuencia; //variable donde cargo los valores de frecuencia del sonido de entrada
+//let frecuenciaAnterior; //memoria de la variable "frecuencia". Guarda el valor de la variable en fotograma anterior
+//const pichModel = 'https://cdn.jsdelivr.net/gh/ml5js/ml5-data-and-models/models/pitch-detection/crepe/';
+//let muchafrec = false;
 
 //------CLASIFICADOR-----
 // Global variable to store the classifier
@@ -104,9 +105,9 @@ function draw() {
   let empezoElSonido = haySonido && !antesHabiaSonido; // EVENTO
   antesHabiaSonido = haySonido; //guardo el estado anterior
   //FRECUENCIAS
-  muchafrec = frecuencia > FREC_MAX;
-  let difDeFrecuencia = frecuencia - frecuenciaAnterior;
-  frecuenciaAnterior = frecuencia;
+ // muchafrec = frecuencia > FREC_MAX;
+  //let difDeFrecuencia = frecuencia - frecuenciaAnterior;
+ // frecuenciaAnterior = frecuencia;
   
 
   

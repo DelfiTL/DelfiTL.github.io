@@ -87,26 +87,6 @@ class Figuras {
     capa1.angleMode(RADIANS);
 
     
-    //-----GRUPO 3 DERECHA--------
-    capa1.push();
-    capa1.translate(490, 290); //antes 200 h
-    capa1.rotate(ang3);
-    capa1.image(rec[D+1], -150 + mov4, 0, 640, 77);
-    capa1.image(peq[11], 90, 130 + mov2, 30-mov2, 23+mov2); //amarillo
-    capa1.image(peq[A], -140, 100 + mov3, 35, 35);
-    capa1.image(peq[A], 100 - mov3, 85, 45, 15);
-    capa1.push();
-    capa1.imageMode(CENTER);
-    capa1.image(med[B], 490-mov2, 100, 200 , 17); 
-    capa1.pop();
-    capa1.push();
-    capa1.translate(500 , 144);
-    capa1.rotate(6);
-    capa1.imageMode(CENTER);
-    capa1.image(med[B], 0 - mov2, 0-mov1, 120-mov2, 15);
-    capa1.image(med[B], 22 + mov1, 24, 50, 15);
-    capa1.pop();
-    capa1.pop();
 
     //-----GRUPO 4 DERECHA--------
     //SUB-GRUPO esquina derecha
@@ -127,12 +107,56 @@ class Figuras {
     capa1.pop();
 
 
+    //-----GRUPO 3 DERECHA--------
+    capa1.push();
+    capa1.translate(490, 320); 
+    capa1.rotate(ang3);
+    capa1.image(rec[D+1], -50 - mov4, 0, 640, 77);
+    capa1.image(peq[17], 400+mov3 , -50, 30, 20); //cuadradito negro
+    capa1.image(peq[17], 400-mov3 , -70, 60, 10); //cuadradito negro
+    capa1.image(rec[4], -100+mov4 , -30, 640, 20);//linea roja
+    capa1.image(rec[6], -180+mov2 , -40-mov1, 640, 20);//line negra
+    capa1.image(peq[11], 90, 130 + mov2, 30-mov2, 23+mov2); //amarillo
+    capa1.image(peq[A], -140, 100 + mov3, 35, 35);
+    capa1.image(peq[A], 100 - mov3, 85, 45, 15);
+    capa1.push();
+    capa1.imageMode(CENTER);
+    capa1.image(med[B], 490-mov2, 100, 200 , 17); 
+    capa1.pop();
+    capa1.push();
+    capa1.translate(500 , 144);
+    capa1.rotate(6);
+    capa1.imageMode(CENTER);
+    capa1.image(med[B], 0 - mov2, 0-mov1, 120-mov2, 15);
+    capa1.image(med[B], 22 + mov1, 24, 50, 15);
+    capa1.pop();
+    capa1.pop();
+
+
+    //-----GRUPO 2 IZQUIERDA--------
+    capa1.push()
+    capa1.translate(-10, 360);
+    capa1.rotate(ang2);
+    capa1.push();
+    capa1.translate(260, 30);
+    capa1.rotate(ang2b);
+    capa1.image(peq[0], -150, 20 - mov2, 100, 13);
+    capa1.image(med[4], -170 - mov2, 45, 100, 9+mov1); //amarillo
+    capa1.rotate(ang2b);
+    capa1.image(peq[A], 0, 0 + mov1, 75+mov2, 20-mov1/2);
+    capa1.image(peq[2], 20 - mov2, -10, 80, 13);
+    capa1.pop();
+    capa1.image(rec[8], 100 + mov2, 170, 260, 50-mov1); //verde
+    capa1.image(peq[6], 340 - mov3, 130, 90, 19); //grup
+    capa1.image(peq[2], 282 + mov2, 60, 35-mov1, 55-mov2); //peque n
+    capa1.pop();
+
 
     //-----GRUPO 1 IZQUIERDA (principal)--------
     capa1.push();
     capa1.translate(0, height);
     capa1.rotate(ang);
-
+  
     capa1.translate(300, 150); //acordate que es doble translate, aprox esta invertido =(Y,X)
     capa1.image(rec[D], 10, 50 + mov2, 500, 20); //rectangulo p
     capa1.image(cuad[C], 140, 40 - mov2, 180, 180); //cuadrado prin
@@ -158,24 +182,6 @@ class Figuras {
     capa1.pop();
 
 
-
-    //-----GRUPO 2 IZQUIERDA--------
-    capa1.push()
-    capa1.translate(-10, 360);
-    capa1.rotate(ang2);
-    capa1.push();
-    capa1.translate(260, 30);
-    capa1.rotate(ang2b);
-    capa1.image(peq[0], -150, 20 - mov2, 100, 13);
-    capa1.image(med[4], -170 - mov2, 45, 100, 9+mov1); //amarillo
-    capa1.rotate(ang2b);
-    capa1.image(peq[A], 0, 0 + mov1, 75+mov2, 20-mov1/2);
-    capa1.image(peq[2], 20 - mov2, -10, 80, 13);
-    capa1.pop();
-    capa1.image(rec[8], 100 + mov2, 170, 260, 50-mov1); //verde
-    capa1.image(peq[6], 340 - mov3, 130, 90, 19); //grup
-    capa1.image(peq[2], 282 + mov2, 60, 35-mov1, 55-mov2); //peque n
-    capa1.pop();
 
   }
 
