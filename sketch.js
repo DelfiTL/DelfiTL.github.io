@@ -1,7 +1,7 @@
 //-------CONFIGURACION----
 let AMP_MIN = 0.003; // umbral mínimo de amplitud. Señal que supera al ruido de fondo
 let AMP_MAX = 0.1; // umbral máximo de amplitud. 
-let FREC_MIN = 180;
+let FREC_MIN = 150;
 let FREC_MAX = 800;
 //-----ENTRADA DE AUDIO----
 let mic;
@@ -13,10 +13,10 @@ let antesHabiaSonido = false;
 
 let audioContext; //motor de audio del navegador
 //----FRECUENCIA -----
-//let frecuencia; //variable donde cargo los valores de frecuencia del sonido de entrada
-//let frecuenciaAnterior; //memoria de la variable "frecuencia". Guarda el valor de la variable en fotograma anterior
-//const pichModel = 'https://cdn.jsdelivr.net/gh/ml5js/ml5-data-and-models/models/pitch-detection/crepe/';
-
+let frecuencia; //variable donde cargo los valores de frecuencia del sonido de entrada
+let frecuenciaAnterior; //memoria de la variable "frecuencia". Guarda el valor de la variable en fotograma anterior
+const pichModel = 'https://cdn.jsdelivr.net/gh/ml5js/ml5-data-and-models/models/pitch-detection/crepe/';
+//let pocafrec=false;
 //------CLASIFICADOR-----
 let classifier;
 let label = 'listening...';
@@ -88,20 +88,20 @@ function draw() {
  antesHabiaSonido = haySonido; //guardo el estado anterior
  //let empezoElSonido = haySonido && !antesHabiaSonido; // EVENTO
   //FRECUENCIAS
- // muchafrec = frecuencia > FREC_MAX;
-  //let difDeFrecuencia = frecuencia - frecuenciaAnterior;
- // frecuenciaAnterior = frecuencia;
+  pocafrec = frecuencia < FREC_MIN;
+  let difDeFrecuencia = frecuencia - frecuenciaAnterior;
+  frecuenciaAnterior = frecuencia;
   
 
  
  fig.dibujarcapa1();
  fig.dibfig();
- capt.captura();
  
  
  if (haySonido ) {
    fig.mover();
    fig.cambiarestado();
+   capt.captura();
    if (label =='shh'){ fig.tamfig();  }
   }
 }

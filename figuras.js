@@ -1,14 +1,14 @@
 //---MOVIMIENTO -----
 let vel = 0.3;
 let vel3 = 1.5;
-let mov1 = 0;
-let mov2 = 0;
-let mov3 = 0;
-let mov4 = 0;
+let mov1 ;
+let mov2;
+let mov3 ;
+let mov4 ;
 //  TAMAÑOS
 let velT =0.3;
-let tam1 = 0;
-let tam2 = 0;
+let tam1;
+let tam2;
 //----ESTADOS imagenes -----
 let A; //para peq
 let B ; //para med
@@ -26,12 +26,20 @@ class Figuras {
   constructor() {
    // let mivoz = map(amp, nohaySonido, AMP_MIN, haySonido, AMP_MAX);
     capa1 = createGraphics(windowWidth - 150, windowHeight - 30); //antes -150 height
-
+   //RANDOM DE ESTADOS
     A = floor(random(17));
     B = floor(random(12));
     C = floor(random(3));
     D = floor(random(8));
     E = floor(random(2));
+    //RANDOM DE MOVIMIENTO
+    mov1 = floor(random(19));
+    mov2 = floor(random(50));
+    mov3 = floor(random(100));
+    mov4 = floor(random(100));
+
+    tam1 = floor(random(19));
+    tam2 = floor(random(60));
   }
 
   dibujarcapa1() {
@@ -62,20 +70,14 @@ class Figuras {
   tamfig() {
     tam1 = tam1 + velT;
     tam2 = tam2 + velT;
-  // mov3 = mov3 + vel3; //para que cambien las velocidades
-  //  mov4 = mov4 + vel3;
+
     // NIVEL 1
     if (tam1 >= 20) { velT--; }
     if (tam1 <= 0) { velT++; }
     //NIVEL 2
-    if (tam2 >= 50) { velT--; }
+    if (tam2 >= 70) { velT--; }
     if (tam2 <= 0) { velT++; }
-    //NIVEL 3
-  //  if (mov3 >= 150) { vel3--; }
-  //  if (mov3 <= 0) { vel3++; }
-    //NIVEL 4
-  //  if (mov4 >= 500) { vel3--; }
-  //  if (mov4 <= 0) { vel3++; }
+
   }
 
   cambiarestado() {
@@ -200,8 +202,6 @@ class Figuras {
     capa1.image(peq[0], -50 + mov2, 130, 80, 10+tam1);
     capa1.image(peq[5], -10+mov2 , 160+mov2, 40, 15);
     capa1.pop();
-
-
 
   }
 
